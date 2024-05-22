@@ -1,0 +1,60 @@
+﻿<UserControl xmlns:Components="clr-namespace:CleanerMongoStartUp.Components"  x:Class="CleanerMongoStartUp.EmployeeCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CleanerMongoStartUp"
+             mc:Ignorable="d" 
+             Loaded="onCardLoaded"
+             Width="240"
+             Height="320"
+            >
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontFamily" Value="Consolas" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style TargetType="Grid" >
+            <Setter Property="Background" Value="AliceBlue" />
+        </Style>
+        <Style TargetType="Button" >
+            <Setter Property="Background" Value="CornflowerBlue" />
+            <Setter Property="Foreground" Value="AntiqueWhite" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="FontSize"  Value="10"/>
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="BorderThickness" Value="0.5" />
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+
+        </Style>
+    </UserControl.Resources>
+
+    <Border BorderBrush="DarkGray" CornerRadius="6" BorderThickness="0.5" Margin="0 5">
+
+        <Grid ShowGridLines="False">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--  <Components:Base64ToImage Grid.Row="0" x:Name="EmployeeImage"/> -->
+            <Image Grid.Row="0" x:Name="EmployeeImage" VerticalAlignment="Top"  />
+            <WrapPanel Grid.Row="1">
+                <TextBlock x:Name="EmployeeFirstName"  Text="Hello" />
+                <TextBlock x:Name="EmployeeLastName" Text="Hello" />
+            </WrapPanel>
+
+            <TextBlock x:Name="EmployeeEmail" Grid.Row="2" Text="Hello" />
+            <TextBlock x:Name="EmployeeAge" Grid.Row="3" Text="70" />
+            <Button Grid.Row="3" Content="More details." Click="Button_Click" />
+
+
+        </Grid>
+    </Border>
+</UserControl>
