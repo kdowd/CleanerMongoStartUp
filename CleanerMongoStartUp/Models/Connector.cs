@@ -15,11 +15,10 @@ namespace CleanerMongoStartUp.Models
 {
     internal class Connector
     {
-        public static MongoClient? _client;
+        private const string connectionUri = "mongodb+srv://yourHero:Yoobee01@bse2024.jon1dt4.mongodb.net/?retryWrites=true&w=majority&appName=BSE2024";
+        private static MongoClient? _client;
         public static MongoDatabaseBase? _database;
 
-
-        private const string connectionUri = "mongodb+srv://yourHero:Yoobee01@bse2024.jon1dt4.mongodb.net/?retryWrites=true&w=majority&appName=BSE2024";
 
         public Connector()
         {
@@ -36,7 +35,7 @@ namespace CleanerMongoStartUp.Models
                 _database = _client.GetDatabase("kdowd") as MongoDatabaseBase;
 
 
-                //debug only
+                //debug only, can we successfuly ping our DB, response from Mongo is Bson not Json
                 //if (_database != null)
                 //{
                 //    BsonDocument isOK = _database.RunCommand<BsonDocument>(new BsonDocument("ping", 1));
@@ -44,14 +43,7 @@ namespace CleanerMongoStartUp.Models
                 //    MessageBox.Show(result.ToString());
                 //}
 
-                //if (_database != null)
-                //{
-                //    var ddd = _database.GetCollection<Employees>("employees");
-                //}
 
-
-                //  
-                //   FirstDocument = Collection.Find(new BsonDocument()).FirstOrDefault();
 
             }
             catch (Exception e)

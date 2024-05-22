@@ -41,22 +41,29 @@ namespace CleanerMongoStartUp.View
 
                 if (collectionResults != null)
                 {
+                    // put into a dat structire we can loop through
                     List<Employees> employeesList = collectionResults.AsQueryable().ToList<Employees>();
 
 
+                    // and loop
                     foreach (Employees employee in employeesList)
                     {
 
                         EmployeeCard temp = new EmployeeCard();
 
-                        BitmapSource convertedImage = BitmapFromBase64(employee.Img);
-
-                        temp.uid = employee.Id.ToString();
-                        temp.EmployeeImage.Source = convertedImage;
                         temp.EmployeeFirstName.Text = employee.FirstName ?? "";
                         temp.EmployeeLastName.Text = employee.LastName ?? "";
                         temp.EmployeeEmail.Text = employee.Email ?? "";
                         temp.EmployeeAge.Text = employee.Age.ToString() ?? "";
+
+                        // finally, convert base64 and set Image control source
+                        if (string.IsNullOrWhiteSpace(employee.Img) == false)
+                        {
+                            BitmapSource convertedImage = BitmapFromBase64(employee.Img);
+                            temp.uid = employee.Id.ToString();
+                            temp.EmployeeImage.Source = convertedImage;
+                        }
+
 
 
                         employees_panel.Children.Add(temp);
@@ -72,6 +79,7 @@ namespace CleanerMongoStartUp.View
 
         public BitmapSource BitmapFromBase64(string? b64string)
         {
+
             var bytes = Convert.FromBase64String(b64string);
 
             using (var stream = new MemoryStream(bytes))

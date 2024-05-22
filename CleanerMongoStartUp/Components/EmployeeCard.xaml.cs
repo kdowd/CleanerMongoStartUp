@@ -20,9 +20,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace CleanerMongoStartUp
 {
-    /// <summary>
-    /// Interaction logic for EmployeeCard.xaml
-    /// </summary>
+
     public partial class EmployeeCard : UserControl
     {
         private string _uid;

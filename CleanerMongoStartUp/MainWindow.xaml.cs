@@ -12,9 +12,6 @@ using System.Windows.Shapes;
 
 namespace CleanerMongoStartUp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -26,6 +23,7 @@ namespace CleanerMongoStartUp
 
         private void onMainLoaded(object sender, RoutedEventArgs e)
         {
+            // make available the Database via static property;
             Connector connector = new Connector();
 
 
