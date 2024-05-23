@@ -1,24 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CleanerMongoStartUp.Models;
+using MongoConnect.Models;
+using MongoDB.Driver;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using CleanerMongoStartUp.Models;
-using MongoConnect.Models;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
-using MongoDB.Driver;
-using Serilog;
 
 namespace CleanerMongoStartUp.View
 {
@@ -35,7 +21,6 @@ namespace CleanerMongoStartUp.View
             {
                 MongoDatabaseBase db = Connector._database;
                 IMongoCollection<Employees> collectionResults = db.GetCollection<Employees>("employees");
-
 
 
 

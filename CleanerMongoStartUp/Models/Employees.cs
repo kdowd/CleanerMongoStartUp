@@ -32,27 +32,24 @@ namespace MongoConnect.Models
 
         [BsonRepresentation(BsonType.String)]
         [BsonElement("img")]
-
-        private string? _img;
-
-        public string? Img
-        {
-            get { return _img; }
-            set { _img = value; }
-        }
+        public string? Img { get; set; }
 
         [BsonRepresentation(BsonType.Int32)]
         [BsonElement("age")]
         public int? Age { get; set; }
 
+
+
+
         // do we need this ?
-        //public Employees(string? firstName, string? lastName, string? email, int? age)
-        //{
-        //    FirstName = firstName;
-        //    LastName = lastName;
-        //    Email = email;
-        //    Age = age;
-        //}
+        public Employees(string firstName, string lastName, string email, int age, string img)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Age = age;
+            Img = String.Empty;
+        }
     }
 }
 

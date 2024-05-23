@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MongoDB.Driver;
-using MongoDB.Bson;
-using System.Diagnostics;
-using System.Collections;
+﻿using MongoDB.Driver;
 using System.Windows;
-using MongoConnect.Models;
 
 
 namespace CleanerMongoStartUp.Models
