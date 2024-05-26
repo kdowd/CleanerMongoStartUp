@@ -7,10 +7,32 @@
         mc:Ignorable="d"
         Title="Update Employee" Height="600" Width="300"
         Closing="ChildWindow_Closing" 
-        Closed="ChildWindow_Closed" ShowInTaskbar="False" Background="#FFD0C8C8"
+        Closed="ChildWindow_Closed" ShowInTaskbar="False" Background="FloralWhite"
          >
     <Grid Loaded="onLoaded">
-        <Label x:Name="MyLabel"  Content=""  HorizontalAlignment="Center"  VerticalAlignment="Top"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label x:Name="MyLabel"  Content=""  HorizontalAlignment="Center"  VerticalAlignment="Top" Visibility="Hidden"/>
+
+        <Image Grid.Row="0" x:Name="EmployeeImage" VerticalAlignment="Top" MaxHeight="300" Stretch="UniformToFill" HorizontalAlignment="Center" />
+        <WrapPanel Grid.Row="1">
+            <TextBlock x:Name="EmployeeFirstName"  Text="Hello" />
+            <TextBlock Text=" " />
+            <TextBlock x:Name="EmployeeLastName" Text="Hello" />
+        </WrapPanel>
+
+
+
+
+
+
+
 
     </Grid>
 </Window>
+ 

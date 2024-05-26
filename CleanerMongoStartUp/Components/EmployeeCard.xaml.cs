@@ -36,7 +36,7 @@ namespace CleanerMongoStartUp
 
             // MessageBox.Show($"Employees Unique ID = ${uid}");
             new ChildWindow(uid).Show();
-            //  TestWriteToDB? temp = new();
+
 
         }
     }

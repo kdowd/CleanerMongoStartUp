@@ -8,6 +8,11 @@ using MongoConnect.Models;
 using System.Diagnostics;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Linq;
+using System.Globalization;
+using System.IO;
+using System.Windows.Media.Imaging;
+
 
 
 namespace CleanerMongoStartUp.Components
@@ -39,27 +44,18 @@ namespace CleanerMongoStartUp.Components
 
         }
 
-        public async static void FindMoviesAsDocuments(string collName)
+        public BitmapSource BitmapFromBase64(string? b64string)
         {
-            var db = Connector._database as MongoDatabaseBase;
 
-            var collection = db.GetCollection<BsonDocument>(collName);
-            var filter = new BsonDocument();
-            int count = 0;
-            using (var cursor = await collection.FindAsync<BsonDocument>(filter))
+            var bytes = Convert.FromBase64String(b64string);
+
+            using (var stream = new MemoryStream(bytes))
             {
-                while (await cursor.MoveNextAsync())
-                {
-                    var batch = cursor.Current;
-                    foreach (var document in batch)
-                    {
-                        var movieName = document.GetElement("firstname").Value.ToString();
-                        Debug.WriteLine("Movie Name: {0}", movieName);
-                        count++;
-                    }
-                }
+                return BitmapFrame.Create(stream,
+                    BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
             }
         }
+
 
         private void onLoaded(object sender, RoutedEventArgs e)
         {
@@ -68,27 +64,44 @@ namespace CleanerMongoStartUp.Components
 
             MongoDatabaseBase db;
 
-            // IMongoCollection<Employees> collectionResults;
-
             if (Connector._database != null)
             {
                 db = Connector._database as MongoDatabaseBase;
 
-                //var expresssionFilter = Builders<Employees>.Filter.Lt(x => x.Age, 23);
-                //var expresssionFilter = Builders<Employees>.Filter.Eq(x => x.Id, _objectId);
+                // finds all with maths logic
+                //var MyFilter = Builders<Employees>.Filter.Lt(x => x.Age, 23);
+                //var MyFilter = Builders<Employees>.Filter.Eq(x => x.Id, _objectId);
 
-                //var expresssionFilter = new BsonDocument();
-                //var expresssionFilter = new BsonDocument("_id", _objectId);
-                var expresssionFilter = new BsonDocument("age", 12);
+                // finds all in collection
+                //var MyFilter = new BsonDocument();
+
+                //var MyFilter = new BsonDocument("age", 80);
+
+                var MyFilter = new BsonDocument("_id", _objectId);
+                //var MyFilter = new BsonDocument();
+                //MyFilter.Add("_id", _objectId);
 
 
-                List<Employees> collection = db.GetCollection<Employees>("employees").Find(expresssionFilter).ToList();
+                List<Employees> collection = db.GetCollection<Employees>("employees")
+                    .Find(MyFilter)
+                    .ToList();
 
-                if (collection?.Count > 1)
+
+                if (collection?.Count >= 1)
                 {
                     foreach (var item in collection)
                     {
-                        MessageBox.Show(item.Email);
+                        EmployeeFirstName.Text = item.FirstName;
+                        EmployeeLastName.Text = item.LastName;
+
+                        // finally, convert base64 and set Image control source
+                        if (string.IsNullOrWhiteSpace(item.Img) == false)
+                        {
+                            BitmapSource convertedImage = BitmapFromBase64(item.Img);
+
+                            EmployeeImage.Source = convertedImage;
+                        }
+
                     }
                 }
                 else
@@ -98,13 +111,9 @@ namespace CleanerMongoStartUp.Components
 
 
 
-                //MessageBox.Show(collection.ToBsonDocument);
 
 
 
-
-
-                // var movies = collection.AsQueryable().ToList();
 
             }
         }

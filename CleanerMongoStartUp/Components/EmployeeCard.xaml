@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              Loaded="onCardLoaded"
              Width="240"
-             Height="280"
+             Height="Auto"
             >
     <UserControl.Resources>
         <Style TargetType="TextBlock">
@@ -44,10 +44,10 @@
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <!--  <Components:Base64ToImage Grid.Row="0" x:Name="EmployeeImage"/> -->
-            <Image Grid.Row="0" x:Name="EmployeeImage" VerticalAlignment="Top"  />
+
             <WrapPanel Grid.Row="1">
                 <TextBlock x:Name="EmployeeFirstName"  Text="Hello" />
+                <TextBlock Text=" " />
                 <TextBlock x:Name="EmployeeLastName" Text="Hello" />
             </WrapPanel>
 

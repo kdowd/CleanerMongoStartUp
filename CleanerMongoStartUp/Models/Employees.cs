@@ -38,17 +38,21 @@ namespace MongoConnect.Models
         [BsonElement("age")]
         public int? Age { get; set; }
 
+        [BsonRepresentation(BsonType.String)]
+        [BsonElement("description")]
+        public string? Description { get; set; }
 
 
 
-        // do we need this ?
-        public Employees(string firstName, string lastName, string email, int age, string img)
+        // do we need this - only for uploading not for reading data ?
+        public Employees(string firstName, string lastName, string email, int age, string img, string description)
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
             Age = age;
             Img = String.Empty;
+            Description = description;
         }
     }
 }

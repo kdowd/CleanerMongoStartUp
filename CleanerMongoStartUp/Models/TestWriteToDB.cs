@@ -21,7 +21,7 @@ namespace CleanerMongoStartUp.Models
 
 
 
-            collectionResults.InsertOne(new Employees("RICHIE", "SUNAK", "richie@tory.com", 44, "AHHHHH") { });
+            collectionResults.InsertOne(new Employees("RICHIE", "SUNAK", "richie@tory.com", 44, "AHHHHH", description: "blah") { });
         }
     }
 }

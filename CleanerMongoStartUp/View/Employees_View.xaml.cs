@@ -42,13 +42,6 @@ namespace CleanerMongoStartUp.View
                         temp.EmployeeAge.Text = employee.Age.ToString() ?? "";
                         temp.uid = employee.Id;
 
-                        // finally, convert base64 and set Image control source
-                        if (string.IsNullOrWhiteSpace(employee.Img) == false)
-                        {
-                            BitmapSource convertedImage = BitmapFromBase64(employee.Img);
-
-                            temp.EmployeeImage.Source = convertedImage;
-                        }
 
 
 
