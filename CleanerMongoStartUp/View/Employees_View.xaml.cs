@@ -40,12 +40,13 @@ namespace CleanerMongoStartUp.View
                         temp.EmployeeLastName.Text = employee.LastName ?? "";
                         temp.EmployeeEmail.Text = employee.Email ?? "";
                         temp.EmployeeAge.Text = employee.Age.ToString() ?? "";
+                        temp.uid = employee.Id;
 
                         // finally, convert base64 and set Image control source
                         if (string.IsNullOrWhiteSpace(employee.Img) == false)
                         {
                             BitmapSource convertedImage = BitmapFromBase64(employee.Img);
-                            temp.uid = employee.Id.ToString();
+
                             temp.EmployeeImage.Source = convertedImage;
                         }
 

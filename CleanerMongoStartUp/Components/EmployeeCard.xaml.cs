@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using CleanerMongoStartUp.Components;
+using MongoDB.Bson;
 
 
 
@@ -10,9 +11,9 @@ namespace CleanerMongoStartUp
 
     public partial class EmployeeCard : UserControl
     {
-        private string _uid;
+        private ObjectId _uid;
 
-        public string uid
+        public ObjectId uid
         {
             get { return _uid; }
             set { _uid = value; }
@@ -34,7 +35,7 @@ namespace CleanerMongoStartUp
         {
 
             // MessageBox.Show($"Employees Unique ID = ${uid}");
-            new ChildWindow().Show();
+            new ChildWindow(uid).Show();
             //  TestWriteToDB? temp = new();
 
         }
