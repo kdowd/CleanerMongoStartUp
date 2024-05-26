@@ -1,5 +1,6 @@
 ﻿using CleanerMongoStartUp.Models;
 using MongoConnect.Models;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System.IO;
 using System.Windows;
@@ -20,15 +21,17 @@ namespace CleanerMongoStartUp.View
             if (Connector._database != null)
             {
                 MongoDatabaseBase db = Connector._database;
-                IMongoCollection<Employees> collectionResults = db.GetCollection<Employees>("employees");
+                var MyFilterFindAll = new BsonDocument();
+                // convert into a data structure we can loop through
+                List<Employees> employeesList = db.GetCollection<Employees>("employees")
+                    .Find(MyFilterFindAll)
+                    .SortBy(x => x.LastName)
+                    .ToList();
 
 
 
-                if (collectionResults != null)
+                if (employeesList.Count > 0)
                 {
-                    // put into a dat structire we can loop through
-                    List<Employees> employeesList = collectionResults.AsQueryable().ToList<Employees>();
-
 
                     // and loop
                     foreach (Employees employee in employeesList)

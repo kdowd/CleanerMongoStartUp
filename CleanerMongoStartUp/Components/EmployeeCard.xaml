@@ -48,7 +48,7 @@
             <WrapPanel Grid.Row="1">
                 <TextBlock x:Name="EmployeeFirstName"  Text="Hello" />
                 <TextBlock Text=" " />
-                <TextBlock x:Name="EmployeeLastName" Text="Hello" />
+                <TextBlock x:Name="EmployeeLastName" Text="Hello" FontWeight="UltraBold" />
             </WrapPanel>
 
             <TextBlock x:Name="EmployeeEmail" Grid.Row="2" Text="Hello" />
