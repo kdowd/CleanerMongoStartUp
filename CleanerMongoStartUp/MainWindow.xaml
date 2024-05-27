@@ -7,7 +7,7 @@
         xmlns:View="clr-namespace:CleanerMongoStartUp.View" x:Class="CleanerMongoStartUp.MainWindow"
         mc:Ignorable="d"
         Loaded="onMainLoaded"
-        Title="MainWindow" Height="600" Width="800">
+        Title="Famous Kiwi's App" Height="600" Width="800">
     <Window.Resources>
 
     </Window.Resources>
@@ -26,7 +26,8 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <View:Employees_View Grid.Row="0" MinWidth="200" Padding="20" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+        <View:Employees_View Grid.Row="0" MinWidth="200" Padding="20" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Loaded="Employees_View_Loaded"/>
+        <TextBlock Width="300" TextAlignment="Left" LineHeight="28" TextWrapping="Wrap" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0" Padding="0,20,0,0" Grid.Column="1" Grid.RowSpan="2"  ><Run Text="Famous New Zealanders."/><LineBreak/><Run/><LineBreak/><Run Text="Here are some famous New Zealanders you could learn about. "/><LineBreak/><Run/><LineBreak/><Run Text="We have fact files for everyone in this list that teachers and parents can download to use with their children when learning about famous Kiwis."/></TextBlock>
 
     </Grid>
 </Window>

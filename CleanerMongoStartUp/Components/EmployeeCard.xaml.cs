@@ -34,9 +34,12 @@ namespace CleanerMongoStartUp
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            // MessageBox.Show($"Employees Unique ID = ${uid}");
+
+            // pass though the _id and when window opens perform a DB search
             new ChildWindow(uid).Show();
 
+            // Debug
+            // MessageBox.Show($"Employees Unique ID = ${uid}");
 
         }
     }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CleanerMongoStartUp.Components"
         mc:Ignorable="d"
-        Title="Update Employee" Height="600" Width="300"
+        Title="Famous Kiwi" Height="600" Width="300"
         Closing="ChildWindow_Closing" 
         Closed="ChildWindow_Closed" ShowInTaskbar="False" Background="FloralWhite"
          >
@@ -20,11 +20,28 @@
         <Label x:Name="MyLabel"  Content=""  HorizontalAlignment="Center"  VerticalAlignment="Top" Visibility="Hidden"/>
 
         <Image Grid.Row="0" x:Name="EmployeeImage" VerticalAlignment="Top" MaxHeight="300" Stretch="UniformToFill" HorizontalAlignment="Center" />
-        <WrapPanel Grid.Row="1">
-            <TextBlock x:Name="EmployeeFirstName"  Text="Hello" />
-            <TextBlock Text=" " />
-            <TextBlock x:Name="EmployeeLastName" Text="Hello" />
+        <WrapPanel Grid.Row="1" Margin="8 4 0 0 ">
+            <TextBlock FontSize="22" x:Name="EmployeeFirstName"  Text="Hello" />
+            <TextBlock FontSize="22" Text=" " />
+            <TextBlock FontSize="22" x:Name="EmployeeLastName" Text="Hello" />
         </WrapPanel>
+
+        <WrapPanel Grid.Row="2" Orientation="Vertical" Margin="8 4 0 0 " VerticalAlignment="Top">
+            <WrapPanel Orientation="Horizontal">
+                <TextBlock Text="Email: " />
+                <TextBlock x:Name="EmployeeEmail" Text="Email"></TextBlock>
+            </WrapPanel>
+
+            <WrapPanel Orientation="Horizontal">
+                <TextBlock Text="Ext: " />
+                <TextBlock x:Name="EmployeeExt" Text="Ext"></TextBlock>
+            </WrapPanel>
+
+        </WrapPanel>
+
+
+        <TextBlock Grid.Row="3" Margin="8, 0 0 0 " Height="220" FontSize="16" x:Name="EmployeeDescription"  Text="Decription" TextWrapping="Wrap" />
+
 
 
 

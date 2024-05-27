@@ -28,5 +28,10 @@ namespace CleanerMongoStartUp
 
 
         }
+
+        private void Employees_View_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

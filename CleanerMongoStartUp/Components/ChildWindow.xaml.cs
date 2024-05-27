@@ -1,16 +1,10 @@
-﻿using System.ComponentModel;
-using System.Windows;
-using MongoDB.Driver;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using CleanerMongoStartUp.Models;
+﻿using CleanerMongoStartUp.Models;
 using MongoConnect.Models;
-using System.Diagnostics;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Linq;
-using System.Globalization;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using System.ComponentModel;
 using System.IO;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 
@@ -33,9 +27,9 @@ namespace CleanerMongoStartUp.Components
 
         private void ChildWindow_Closing(object sender, CancelEventArgs e)
         {
-
-            //var result = MessageBox.Show("Close Window?", "Application Shutdown Sample", MessageBoxButton.YesNo,
-            //    MessageBoxImage.Question);
+            // annoying....
+            //var result = MessageBox.Show("Close Window?", "People Window", MessageBoxButton.YesNo,
+            //MessageBoxImage.Question);
             //e.Cancel = (result == MessageBoxResult.No);
         }
 
@@ -69,17 +63,18 @@ namespace CleanerMongoStartUp.Components
                 db = Connector._database as MongoDatabaseBase;
 
                 // finds all with maths logic
-                //var MyFilter = Builders<Employees>.Filter.Lt(x => x.Age, 23);
+                //var MyFilter = Builders<Employees>.Filter.Lt(x => x.Age, 80);
                 //var MyFilter = Builders<Employees>.Filter.Eq(x => x.Id, _objectId);
 
-                // finds all in collection
+                // finds all in current collection
                 //var MyFilter = new BsonDocument();
 
+                // finds all whose age is 80
                 //var MyFilter = new BsonDocument("age", 80);
 
+                // finds based upon _id - can only return 1 doc
                 var MyFilter = new BsonDocument("_id", _objectId);
-                //var MyFilter = new BsonDocument();
-                //MyFilter.Add("_id", _objectId);
+
 
 
                 List<Employees> collection = db.GetCollection<Employees>("employees")
@@ -93,6 +88,10 @@ namespace CleanerMongoStartUp.Components
                     {
                         EmployeeFirstName.Text = item.FirstName;
                         EmployeeLastName.Text = item.LastName;
+                        EmployeeEmail.Text = item.Email;
+                        EmployeeExt.Text = item.Age.ToString();
+                        EmployeeDescription.Text = item.Description;
+
 
                         // finally, convert base64 and set Image control source
                         if (string.IsNullOrWhiteSpace(item.Img) == false)

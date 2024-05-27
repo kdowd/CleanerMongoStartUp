@@ -53,7 +53,7 @@
 
             <TextBlock x:Name="EmployeeEmail" Grid.Row="2" Text="Hello" />
             <WrapPanel Grid.Row="3" Orientation="Horizontal">
-                <TextBlock Grid.Row="3" Text="Telephone Ext: " />
+                <TextBlock Grid.Row="3" Text="Age: " />
                 <TextBlock x:Name="EmployeeAge"  Text="70" />
             </WrapPanel>
 
