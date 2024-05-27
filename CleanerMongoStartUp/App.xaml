@@ -2,9 +2,16 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CleanerMongoStartUp"
-             StartupUri="MainWindow.xaml">
+             StartupUri="MainWindow.xaml"
+
+>
     <Application.Resources>
+        <Style x:Key="AppStylee" TargetType="Window">
+            <Setter Property="FontFamily" Value="Cascadia Code" />
+        </Style>
 
-
+        <Style TargetType="Page"  >
+            <Setter Property="FontFamily" Value="Cascadia Code" />
+        </Style>
     </Application.Resources>
 </Application>

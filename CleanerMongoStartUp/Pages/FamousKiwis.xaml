@@ -1,0 +1,33 @@
+﻿<Page x:Class="CleanerMongoStartUp.Pages.FamousKiwis"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CleanerMongoStartUp.Pages"
+      xmlns:View="clr-namespace:CleanerMongoStartUp.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      ShowsNavigationUI="False"
+      Title="FamousKiwis" Loaded="onLoaded">
+
+    <Grid ShowGridLines="False" >
+
+        <Grid.RowDefinitions>
+            <RowDefinition>
+
+            </RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <View:Employees_View Grid.Row="0" MinWidth="200" Padding="20" Grid.Column="0" Grid.RowSpan="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Loaded="Employees_View_Loaded"/>
+        <TextBlock Width="300" TextAlignment="Left" LineHeight="28" TextWrapping="Wrap" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0" Padding="0,20,0,0" Grid.Column="1" Grid.RowSpan="2"  ><Run Text="Famous New Zealanders."/><LineBreak/><Run/><LineBreak/><Run Text="Here are some famous New Zealanders you could learn about. "/><LineBreak/><Run/><LineBreak/><Run Text="We have fact files for everyone in this list that teachers and parents can download to use with their children when learning about famous Kiwis."/></TextBlock>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="20">
+            <Button FontSize="22" Content="Add Kiwi" VerticalAlignment="Center" Padding="20" Cursor="Hand" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
