@@ -36,7 +36,9 @@ namespace CleanerMongoStartUp
 
 
             // pass though the _id and when window opens perform a DB search
-            new ChildWindow(uid).Show();
+            ChildWindow handle = new(uid);
+            handle.Owner = Application.Current.MainWindow as MainWindow;
+            handle.Show();
 
             // Debug
             // MessageBox.Show($"Employees Unique ID = ${uid}");

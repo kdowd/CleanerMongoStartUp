@@ -5,17 +5,22 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CleanerMongoStartUp.Pages"
       xmlns:CleanerMongoStartUp="clr-namespace:CleanerMongoStartUp" x:Class="CleanerMongoStartUp.Pages.CreateKiwi"
+      xmlns:components="clr-namespace:CleanerMongoStartUp.Components" 
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="800"
+      d:DesignHeight="647.368" d:DesignWidth="1019.474"
       Title="CreateKiwi"
       Background="FloralWhite"
+      WindowWidth="1000" 
+      WindowHeight="600"
      >
 
     <Grid>
-        <StackPanel>
-            <TextBlock  Text="{Binding EmployeeFirstName}"><Run  Text="qqqqq"/></TextBlock>
-        </StackPanel>
-        <TextBlock Text="Add Kiwi" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <components:LoginForm Grid.Column="0"/>
+        <Button Content="Add Person" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="30"/>
     </Grid>
+
 </Page>
