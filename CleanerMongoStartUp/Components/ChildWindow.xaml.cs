@@ -38,7 +38,7 @@ namespace CleanerMongoStartUp.Components
 
         }
 
-        public BitmapSource BitmapFromBase64(string? b64string)
+        public BitmapSource BitmapFromBase64(string b64string = "")
         {
 
             var bytes = Convert.FromBase64String(b64string);

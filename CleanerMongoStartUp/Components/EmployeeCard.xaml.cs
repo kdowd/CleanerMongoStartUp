@@ -26,7 +26,7 @@ namespace CleanerMongoStartUp
             InitializeComponent();
         }
 
-        private void onCardLoaded(object sender, RoutedEventArgs e)
+        private void OnCardLoaded(object sender, RoutedEventArgs e)
         {
 
         }

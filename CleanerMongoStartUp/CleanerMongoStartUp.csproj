@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>archery.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,11 +14,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\Prata-Regular.ttf" />
+    <None Remove="Fonts\Dosis-Regular.ttf" />
+    <None Remove="Fonts\NotoSansMono-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
     <Page Remove="Components\Base64ToImage.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="archery.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,7 +32,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\Prata-Regular.ttf">
+    <Resource Include="Fonts\Dosis-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\NotoSansMono-Regular.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

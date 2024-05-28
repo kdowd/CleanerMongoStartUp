@@ -4,23 +4,22 @@
              xmlns:local="clr-namespace:CleanerMongoStartUp"
              StartupUri="MainWindow.xaml"
 >
-    
+
     <Application.Resources>
-        <FontFamily x:Key="PrataRegular">pack://application:,,,/Fonts/Prata-Regular.ttf#Prata</FontFamily>
-   
-        
-        <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="{StaticResource PrataRegular}" />
+        <FontFamily x:Key="DosisRegular">pack://application:,,,/Fonts/Dosis-Regular.ttf#Dosis</FontFamily>
+        <FontFamily x:Key="NotoSansMono">pack://application:,,,/Fonts/NotoSansMono-Regular.ttf#Noto Sans Mono</FontFamily>
+
+
+        <Style TargetType="TextBlock" x:Name="AppBodyFont">
+            <Setter Property="FontFamily" Value="{StaticResource DosisRegular}" />
         </Style>
 
-        <Style TargetType="Page">
-            <Setter Property="FontFamily" Value="{StaticResource PrataRegular}" />
+        <Style TargetType="Label" x:Key="LabelHeading" x:Name="AppHeadingFont">
+            <Setter Property="FontFamily" Value="{StaticResource NotoSansMono}" />
         </Style>
 
-        <Style TargetType="Window">
-            <Setter Property="FontFamily" Value="{StaticResource PrataRegular}" />
-        </Style>
+
 
     </Application.Resources>
-    
+
 </Application>

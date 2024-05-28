@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CleanerMongoStartUp"
              mc:Ignorable="d" 
-             Loaded="onCardLoaded"
+             Loaded="OnCardLoaded"
              Width="240"
              Height="Auto"
             >
     <UserControl.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Background" Value="Transparent" />
-            <Setter Property="FontFamily" Value="{StaticResource PrataRegular}" />
+
             <Setter Property="FontSize" Value="14" />
             <Setter Property="Margin" Value="0,0,0,8" />
         </Style>

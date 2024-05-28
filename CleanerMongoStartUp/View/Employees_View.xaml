@@ -17,7 +17,7 @@
             <ScrollViewer BorderBrush="Black" BorderThickness="2"   Width="Auto"  x:Name="BigScroll" CanContentScroll="False" Padding="20 10"  VerticalScrollBarVisibility="Auto"  HorizontalScrollBarVisibility="Disabled">
 
                 <StackPanel Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="employees_panel" >
-                    <Label Background="Gainsboro" Content="Famous Kiwi's 2024" FontSize="24" FontWeight="SemiBold" />
+                    <Label Style="{StaticResource LabelHeading}" Background="Gainsboro" Content="Famous Kiwi's 2024" FontSize="24" />
                 </StackPanel>
             </ScrollViewer>
 
