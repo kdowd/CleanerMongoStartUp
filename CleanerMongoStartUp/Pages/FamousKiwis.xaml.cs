@@ -42,9 +42,6 @@ namespace CleanerMongoStartUp.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-
-
             var window = (MainWindow)Application.Current.MainWindow;
             Frame TheFrame = window.MyApp as Frame;
             TheFrame.Navigate("Pages/CreateKiwi.xaml");
