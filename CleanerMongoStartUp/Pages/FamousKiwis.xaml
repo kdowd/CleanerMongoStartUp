@@ -8,7 +8,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       ShowsNavigationUI="False"
-      Title="FamousKiwis" Loaded="onLoaded">
+      Title="FamousKiwis" Loaded="onLoaded"
+     
+      >
 
     <Grid ShowGridLines="False" >
 

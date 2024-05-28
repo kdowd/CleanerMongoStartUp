@@ -3,15 +3,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CleanerMongoStartUp"
              StartupUri="MainWindow.xaml"
-
 >
+    
     <Application.Resources>
-        <Style x:Key="AppStylee" TargetType="Window">
-            <Setter Property="FontFamily" Value="Cascadia Code" />
+        <FontFamily x:Key="PrataRegular">pack://application:,,,/Fonts/Prata-Regular.ttf#Prata</FontFamily>
+   
+        
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource PrataRegular}" />
         </Style>
 
-        <Style TargetType="Page"  >
-            <Setter Property="FontFamily" Value="Cascadia Code" />
+        <Style TargetType="Page">
+            <Setter Property="FontFamily" Value="{StaticResource PrataRegular}" />
         </Style>
+
+        <Style TargetType="Window">
+            <Setter Property="FontFamily" Value="{StaticResource PrataRegular}" />
+        </Style>
+
     </Application.Resources>
+    
 </Application>

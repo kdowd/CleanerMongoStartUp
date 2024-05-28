@@ -13,12 +13,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\Prata-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Remove="Components\Base64ToImage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.25.0" />
     <PackageReference Include="Serilog" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\Prata-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
