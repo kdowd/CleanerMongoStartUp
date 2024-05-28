@@ -26,7 +26,7 @@ namespace CleanerMongoStartUp.Pages
             InitializeComponent();
         }
 
-        private void onLoaded(object sender, RoutedEventArgs e)
+        private void OnLoaded(object sender, RoutedEventArgs e)
         {
             // make available the Database via static property;
             Connector connector = new Connector();
@@ -42,9 +42,9 @@ namespace CleanerMongoStartUp.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var window = (MainWindow)Application.Current.MainWindow;
-            Frame TheFrame = window.MyApp as Frame;
-            TheFrame.Navigate("Pages/CreateKiwi.xaml");
+            //var window = (MainWindow)Application.Current.MainWindow;
+            //Frame TheFrame = window.MyApp as Frame;
+            //TheFrame.Navigate("Pages/CreateKiwi.xaml");
 
 
 

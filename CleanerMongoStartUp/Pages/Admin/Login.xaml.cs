@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Diagnostics;
 
-namespace CleanerMongoStartUp.Pages
+namespace CleanerMongoStartUp.Pages.Admin
 {
     /// <summary>
-    /// Interaction logic for CreateKiwi.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class CreateKiwi : Page
+    public partial class Login : Page
     {
-        public CreateKiwi()
+        public Login()
         {
             InitializeComponent();
         }

@@ -9,11 +9,11 @@
       d:DesignHeight="600" d:DesignWidth="800"
       Title="CreateKiwi"
       Background="FloralWhite"
-      Width="800" Height="600">
+     >
 
     <Grid>
         <StackPanel>
-            <TextBlock Background="#FFF10101" Text="{Binding EmployeeFirstName}"><Run  Text="qqqqq"/></TextBlock>
+            <TextBlock  Text="{Binding EmployeeFirstName}"><Run  Text="qqqqq"/></TextBlock>
         </StackPanel>
         <TextBlock Text="Add Kiwi" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"/>
 
