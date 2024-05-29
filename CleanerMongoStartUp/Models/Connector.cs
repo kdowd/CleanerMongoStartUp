@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using System.Windows;
+using MongoDB.Bson;
 
 
 namespace CleanerMongoStartUp.Models

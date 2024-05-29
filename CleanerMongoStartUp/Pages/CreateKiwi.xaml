@@ -19,7 +19,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <components:LoginForm Grid.Column="0"/>
+        <components:LoginForm x:Name="CreateKiwiForm" Grid.Column="0"/>
         <Button Content="Add Person" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="30"/>
     </Grid>
 

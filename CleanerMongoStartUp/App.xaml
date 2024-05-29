@@ -6,19 +6,21 @@
 >
 
     <Application.Resources>
-        <FontFamily x:Key="DosisRegular">pack://application:,,,/Fonts/Dosis-Regular.ttf#Dosis</FontFamily>
         <FontFamily x:Key="NotoSansMono">pack://application:,,,/Fonts/NotoSansMono-Regular.ttf#Noto Sans Mono</FontFamily>
+        <FontFamily x:Key="DosisRegular">pack://application:,,,/Fonts/Dosis-Regular.ttf#Dosis</FontFamily>
+
 
 
         <Style TargetType="TextBlock" x:Name="AppBodyFont">
+            <!-- static or dynamic ? static if it won't change in life of App, static is better performance too -->
             <Setter Property="FontFamily" Value="{StaticResource DosisRegular}" />
         </Style>
 
         <Style TargetType="Label" x:Key="LabelHeading" x:Name="AppHeadingFont">
             <Setter Property="FontFamily" Value="{StaticResource NotoSansMono}" />
+            <Setter Property="FontSize" Value="24" />
+
         </Style>
-
-
 
     </Application.Resources>
 

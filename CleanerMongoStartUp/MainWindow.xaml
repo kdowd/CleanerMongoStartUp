@@ -16,6 +16,6 @@
 
     <Grid ShowGridLines="False" >
         <Frame x:Name="NavFrame" Source="/Pages/Navigation/MainMenu.xaml" Panel.ZIndex="2"  />
-        <Frame Margin="0 40 0 0 " x:Name="MainAppFrame" Source="Pages/FamousKiwis.xaml" NavigationUIVisibility="Hidden" Panel.ZIndex="1" />
+        <Frame Margin="0 40 0 0 " x:Name="MainAppFrame" Source="Pages/CreateKiwi.xaml" NavigationUIVisibility="Hidden" Panel.ZIndex="1" />
     </Grid>
 </Window>

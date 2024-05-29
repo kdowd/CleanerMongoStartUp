@@ -8,16 +8,14 @@
              Loaded="UserControl_Loaded"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
 
-    </UserControl.Resources>
     <GroupBox Padding="10">
         <Grid>
 
             <ScrollViewer BorderBrush="Black" BorderThickness="2"   Width="Auto"  x:Name="BigScroll" CanContentScroll="False" Padding="20 10"  VerticalScrollBarVisibility="Auto"  HorizontalScrollBarVisibility="Disabled">
 
                 <StackPanel Height="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="employees_panel" >
-                    <Label Style="{StaticResource LabelHeading}" Background="Gainsboro" Content="Famous Kiwi's 2024" FontSize="24" />
+                    <Label Style="{StaticResource LabelHeading}" Background="Gainsboro" Content="Famous Kiwi's 2024" />
                 </StackPanel>
             </ScrollViewer>
 

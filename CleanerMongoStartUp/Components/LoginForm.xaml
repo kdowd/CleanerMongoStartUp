@@ -6,13 +6,24 @@
              xmlns:local="clr-namespace:CleanerMongoStartUp.Components"
              mc:Ignorable="d" 
              Background="AliceBlue"
-             d:DesignHeight="600" d:DesignWidth="500">
+             d:DesignHeight="600" d:DesignWidth="500" Loaded="OnLoaded"
+             
+             >
     <UserControl.Resources>
         <Style TargetType="Label">
-            <Setter Property="Padding"  Value="5, 10 10, 0" />
+            <Setter Property="Padding"  Value="0 20" />
             <Setter Property="FontSize" Value="18" />
+
         </Style>
 
+
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="12"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderBrush" Value="LightGray" />
+
+        </Style>
 
     </UserControl.Resources>
 
@@ -24,13 +35,27 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
-        <Label>Name:</Label>
-        <TextBox Grid.Column="1" Margin="0,0,0,10" />
-        <Label Grid.Row="1">E-mail:</Label>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" />
-        <Label Grid.Row="2">Description:</Label>
-        <TextBox Grid.Row="2" Grid.Column="1" AcceptsReturn="True" />
+
+        <Label Grid.Row="0">First Name:</Label>
+        <TextBox x:Name="FirstName" Grid.Column="1"  />
+
+        <Label Grid.Row="1">Last Name:</Label>
+        <TextBox x:Name="LastName" Grid.Row="1" Grid.Column="1"  />
+
+        <Label Grid.Row="2">E-mail:</Label>
+        <TextBox x:Name="Email" Grid.Row="2" Grid.Column="1"  />
+
+        <Label Grid.Row="3">Age:</Label>
+        <TextBox x:Name="Age" Grid.Row="3" Grid.Column="1"  />
+
+        <Label Grid.Row="4">Description:</Label>
+        <TextBox x:Name="Description" Grid.Row="4" Grid.Column="1" AcceptsReturn="True" VerticalContentAlignment="Top" Padding="0 8 0 0" />
+
+        <Button Click="Button_Click" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Padding="10" Content="Create" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

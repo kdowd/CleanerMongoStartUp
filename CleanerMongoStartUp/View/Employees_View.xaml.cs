@@ -22,8 +22,12 @@ namespace CleanerMongoStartUp.View
             {
                 MongoDatabaseBase db = Connector._database;
                 var MyFilterFindAll = new BsonDocument();
+
+                // get results - always returns an IMongoCollection
+                IMongoCollection<Employees> results = db.GetCollection<Employees>("employees");
+
                 // convert into a data structure we can loop through
-                List<Employees> employeesList = db.GetCollection<Employees>("employees")
+                List<Employees> employeesList = results
                     .Find(MyFilterFindAll)
                     .SortBy(x => x.LastName)
                     .ToList();

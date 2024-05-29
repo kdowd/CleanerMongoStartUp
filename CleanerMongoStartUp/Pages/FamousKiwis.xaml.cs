@@ -29,7 +29,7 @@ namespace CleanerMongoStartUp.Pages
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             // make available the Database via static property;
-            Connector connector = new Connector();
+            //Connector connector = new Connector();
 
 
         }
