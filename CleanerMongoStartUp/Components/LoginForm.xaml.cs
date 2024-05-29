@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CleanerMongoStartUp.Models;
+using Microsoft.Win32;
 using MongoConnect.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -53,39 +54,37 @@ namespace CleanerMongoStartUp.Components
             // https://raw.githubusercontent.com/mongodb/docs-csharp/master/source/includes/code-examples/insert-one/InsertOne.cs
             MongoDatabaseBase? db = Connector._database as MongoDatabaseBase;
 
-            if (db != null)
+            if (db == null) { return; }
+
+            try
             {
+                IMongoCollection<Employees> collectionResults = db.GetCollection<Employees>("employees");
 
+                var filter = Builders<Employees>.Filter.Eq(r => r.Email, temp.Email);
+                var document = collectionResults.Find(filter).FirstOrDefault();
 
-                try
+                if (document != null)
                 {
-                    IMongoCollection<Employees> collectionResults = db.GetCollection<Employees>("employees");
-
-                    var filter = Builders<Employees>.Filter.Eq(r => r.Email, temp.Email);
-                    var document = collectionResults.Find(filter).FirstOrDefault();
-
-                    if (document != null)
-                    {
-                        // MessageBox.Show($"Found: {document.ToBsonDocument()}");
-                        MessageBox.Show("That Email already exists");
-                        return;
-                    }
-
-                    // returns void, so test if it inserted, its all synchronous
-                    collectionResults.InsertOne(temp);
-                    var newDoc = collectionResults.Find(filter).FirstOrDefault();
-
-                    // Prints the document
-                    MessageBox.Show($"Document Inserted: {newDoc.ToBsonDocument()}");
-
+                    // MessageBox.Show($"Found: {document.ToBsonDocument()}");
+                    MessageBox.Show("That Email already exists");
+                    return;
                 }
-                catch (MongoException error)
-                {
 
-                    MessageBox.Show(error.ToString());
-                }
+                // returns void, so test if it inserted, its all synchronous
+                collectionResults.InsertOne(temp);
+                var newDoc = collectionResults.Find(filter).FirstOrDefault();
+
+                // Prints the document
+                MessageBox.Show($"Document Inserted: {newDoc.ToBsonDocument()}");
 
             }
+            catch (MongoException error)
+            {
+
+                MessageBox.Show(error.ToString());
+            }
+
+
 
         }
 
@@ -98,6 +97,26 @@ namespace CleanerMongoStartUp.Components
             Email.Text = "john@bbc.com";
             Description.Text = "Music Man";
 
+        }
+
+
+        private void OnFileDialogue(object sender, RoutedEventArgs e)
+        {
+
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "JPG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|JPEG Files (*.jpeg)|*.jpeg|GIF Files (*.gif)|*.gif";
+
+            bool? IsDialogueGood = dlg.ShowDialog();
+
+            // Get the selected file name and display in a TextBox 
+            if (IsDialogueGood == true)
+            {
+
+                // access source through this
+                string filepath = dlg.FileName;
+                string filename = dlg.SafeFileName;
+                ImagePath.Text = filename;
+            }
         }
 
     }

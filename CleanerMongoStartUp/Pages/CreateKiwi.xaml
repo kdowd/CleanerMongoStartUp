@@ -9,7 +9,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="647.368" d:DesignWidth="1019.474"
       Title="CreateKiwi"
-      Background="FloralWhite"
+        Background="AliceBlue"
       WindowWidth="1000" 
       WindowHeight="600"
      >

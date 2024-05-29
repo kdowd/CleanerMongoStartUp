@@ -63,15 +63,18 @@ namespace CleanerMongoStartUp.View
 
         }
 
+
+
+
         public BitmapSource BitmapFromBase64(string? b64string)
         {
+            //var img = Image.FromStream(new MemoryStream(Convert.FromBase64String(base64String)));
 
             var bytes = Convert.FromBase64String(b64string);
 
             using (var stream = new MemoryStream(bytes))
             {
-                return BitmapFrame.Create(stream,
-                    BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                return BitmapFrame.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
             }
         }
     }
