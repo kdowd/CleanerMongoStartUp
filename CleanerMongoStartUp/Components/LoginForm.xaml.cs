@@ -99,7 +99,7 @@ namespace CleanerMongoStartUp.Components
 
         }
 
-
+        // https://stackoverflow.com/questions/21325661/convert-an-image-selected-by-path-to-base64-string 
         private void OnFileDialogue(object sender, RoutedEventArgs e)
         {
 
