@@ -7,7 +7,7 @@
       xmlns:CleanerMongoStartUp="clr-namespace:CleanerMongoStartUp" x:Class="CleanerMongoStartUp.Pages.CreateKiwi"
       xmlns:components="clr-namespace:CleanerMongoStartUp.Components" 
       mc:Ignorable="d" 
-      d:DesignHeight="647.368" d:DesignWidth="1019.474"
+      d:DesignHeight="600" d:DesignWidth="1000"
       Title="CreateKiwi"
         Background="AliceBlue"
       WindowWidth="1000" 
@@ -19,7 +19,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Image Source="/Images/kiwi-removebg.png" Stretch="None" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="400,0,0,0" />
+        <Image Source="/Images/kiwi-removebg.png" Stretch="None" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="414,84,0,-84" />
         <components:LoginForm x:Name="CreateKiwiForm" Grid.Column="0"/>
 
 
