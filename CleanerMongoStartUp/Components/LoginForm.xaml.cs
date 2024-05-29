@@ -87,20 +87,6 @@ namespace CleanerMongoStartUp.Components
 
             }
 
-
-
-
-            //
-
-            // IMongoCollection<Employees> res = collection.InsertOne(temp);
-            //collectionResults.InsertOne(temp);
-
-            // MessageBox.Show(res.ToString());
-            // collectionResults.InsertOne(new Employees("RICHIE", "SUNAK", "richie@tory.com", 44, "AHHHHH", description: "blah") { });
-
-
-
-
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
