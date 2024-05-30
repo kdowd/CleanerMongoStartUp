@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -73,6 +75,25 @@ namespace CleanerMongoStartUp.Components
             return IsFormReady;
         }
 
+        
+
+
+    private bool IsValidEmail(string email)
+    {
+            // RegEx from https://uibakery.io/regex-library/email-regex-csharp
+            Regex validateEmailRegex = new Regex("^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$");
+            return validateEmailRegex.IsMatch(email);
+}
+
+    private void OnEmailFieldLostFocus(object sender, EventArgs e)
+        {
+            string UserEmailString = Email.Text.Trim();
+            if (!string.IsNullOrEmpty(UserEmailString))
+            {
+              bool isGood = IsValidEmail(UserEmailString);
+            }
+        }
+
         private void OnAgeFieldLostFocus(object sender, EventArgs e)
         {
             int age;
@@ -96,12 +117,8 @@ namespace CleanerMongoStartUp.Components
                 return;
             }
 
-
-
             string fn = FirstName.Text.Trim() ?? "";
             string ln = LastName.Text.Trim() ?? "";
-
-
 
             string email = Email.Text.Trim() ?? "";
             string desc = Description.Text.Trim() ?? "";
@@ -117,11 +134,14 @@ namespace CleanerMongoStartUp.Components
             {
                 IMongoCollection<Employees> collectionResults = db.GetCollection<Employees>("employees");
 
-                // check if email already exists
-                var filter = Builders<Employees>.Filter.Eq(r => r.Email, temp.Email);
+                // check if email already exists using Builders fpr DB query;
+                // should be called QueryBuilder really...
+                var filter = Builders<Employees>.Filter.Eq("Email", temp.Email);
+                //var filter = Builders<Employees>.Filter.Eq("Email", temp.Email) &
+                // Builders<Employees>.Filter.Eq("UserName", temp.FirstName);
 
                 // isFoundDoc will be returned as an Employees Class from MongoDB
-                Employees IsFoundDoc = collectionResults.Find(filter).FirstOrDefault();
+                Employees? IsFoundDoc = collectionResults.Find(filter).FirstOrDefault();
 
                 if (IsFoundDoc != null)
                 {
@@ -156,9 +176,9 @@ namespace CleanerMongoStartUp.Components
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            // pre-populate for easy testing
+            // pre-populate form for easy testing
             //FirstName.Text = "john";
-            //LastName.Text = "peel";
+            //LastName.Text = "Peel";
             //Age.Text = "66"; ;
             //Email.Text = "john@bbc.com";
             //Description.Text = "Music Man";
@@ -188,7 +208,7 @@ namespace CleanerMongoStartUp.Components
                 {
                     byte[] imageArray = System.IO.File.ReadAllBytes(filepath);
                     Base64Image = Convert.ToBase64String(imageArray);
-                    // finally, update UI
+                    // finally, update UI, could even show an image thumb in the form. Nice.
                     ImagePath.Text = filename;
                 }
 
