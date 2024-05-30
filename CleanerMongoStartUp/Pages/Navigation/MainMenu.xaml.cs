@@ -46,6 +46,12 @@ namespace CleanerMongoStartUp.Pages.Navigation
                             w?.MainAppFrame?.Navigate(p);
                         }
                         break;
+                    case "_View People":
+                        {
+                            Page p = new FamousKiwis();
+                            w?.MainAppFrame?.Navigate(p);
+                        }
+                        break;
                     case "_Add People":
                         {
                             Page p = new CreateKiwi();

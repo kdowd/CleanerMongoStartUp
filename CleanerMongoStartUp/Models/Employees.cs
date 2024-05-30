@@ -45,13 +45,13 @@ namespace MongoConnect.Models
 
 
         // do we need this - only for uploading not for reading data ?
-        public Employees(string firstName, string lastName, string email, int age, string img, string description)
+        public Employees(string firstName, string lastName, string email, int age, string imgAsB64, string description)
         {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
             Age = age;
-            Img = String.Empty;
+            Img = imgAsB64;
             Description = description;
         }
     }

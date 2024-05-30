@@ -52,7 +52,7 @@
         <TextBox x:Name="Email" Grid.Row="2" Grid.Column="1"  />
 
         <Label Grid.Row="3">Age:</Label>
-        <TextBox x:Name="Age" Grid.Row="3" Grid.Column="1"  />
+        <TextBox x:Name="Age" Grid.Row="3" Grid.Column="1" LostFocus="OnAgeFieldLostFocus"  />
 
         <Label Grid.Row="4">Image:</Label>
 

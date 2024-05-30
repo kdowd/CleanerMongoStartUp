@@ -24,34 +24,91 @@ namespace CleanerMongoStartUp.Components
 
     public partial class LoginForm : UserControl
     {
+        private string? Base64Image { get; set; } = string.Empty;
+        private int UserAge { get; set; } = 0;
+
         public LoginForm()
         {
             InitializeComponent();
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private bool OnValidate()
         {
+            bool IsFormReady = true;
 
-            string fn = FirstName.Text.Trim() ?? "";
-            string ln = LastName.Text.Trim() ?? "";
+            if (string.IsNullOrEmpty(FirstName.Text.Trim()))
+            {
+                return false;
+            };
+
+            if (string.IsNullOrEmpty(LastName.Text.Trim()))
+            {
+                return false;
+            };
+
+            if (string.IsNullOrEmpty(Email.Text.Trim()))
+            {
+                return false;
+            };
+
+
+            if (UserAge <= 0)
+            {
+                return false;
+            };
+            if (string.IsNullOrEmpty(Description.Text.Trim()))
+            {
+                return false;
+            };
+
+            if (string.IsNullOrEmpty(Base64Image.Trim()))
+            {
+                return false;
+            };
+
+
+
+
+            return IsFormReady;
+        }
+
+        private void OnAgeFieldLostFocus(object sender, EventArgs e)
+        {
             int age;
 
             if (Int32.TryParse(Age.Text.Trim(), out age))
             {
-                // success
+                UserAge = age;
             }
             else
             {
                 // fail, handle it
                 age = 0;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (OnValidate() == false)
+            {
+                MessageBox.Show("Please Fillin Form Correctly");
+                return;
+            }
+
+
+
+            string fn = FirstName.Text.Trim() ?? "";
+            string ln = LastName.Text.Trim() ?? "";
+
+
 
             string email = Email.Text.Trim() ?? "";
             string desc = Description.Text.Trim() ?? "";
-            var temp = new Employees(fn, ln, email, age, "", desc);
 
-            // https://raw.githubusercontent.com/mongodb/docs-csharp/master/source/includes/code-examples/insert-one/InsertOne.cs
+            var temp = new Employees(fn, ln, email, this.UserAge, this.Base64Image, desc);
+
+
             MongoDatabaseBase? db = Connector._database as MongoDatabaseBase;
 
             if (db == null) { return; }
@@ -60,22 +117,31 @@ namespace CleanerMongoStartUp.Components
             {
                 IMongoCollection<Employees> collectionResults = db.GetCollection<Employees>("employees");
 
+                // check if email already exists
                 var filter = Builders<Employees>.Filter.Eq(r => r.Email, temp.Email);
-                var document = collectionResults.Find(filter).FirstOrDefault();
 
-                if (document != null)
+                // isFoundDoc will be returned as an Employees Class from MongoDB
+                Employees IsFoundDoc = collectionResults.Find(filter).FirstOrDefault();
+
+                if (IsFoundDoc != null)
                 {
                     // MessageBox.Show($"Found: {document.ToBsonDocument()}");
                     MessageBox.Show("That Email already exists");
                     return;
                 }
 
-                // returns void, so test if it inserted, its all synchronous
+                // InsertOne doesn't return anything !!!!
                 collectionResults.InsertOne(temp);
-                var newDoc = collectionResults.Find(filter).FirstOrDefault();
+                //So, we need to test if really was inserted
+                Employees IsInsertedDoc = collectionResults.Find(filter).FirstOrDefault();
 
-                // Prints the document
-                MessageBox.Show($"Document Inserted: {newDoc.ToBsonDocument()}");
+
+                if (IsInsertedDoc != null)
+                {
+                    // need to update UI sonehow
+                    MessageBox.Show("Document Inserted");
+                }
+
 
             }
             catch (MongoException error)
@@ -90,12 +156,13 @@ namespace CleanerMongoStartUp.Components
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            FirstName.Text = "john";
-            LastName.Text = "peel";
-            Age.Text = "66"; ;
+            // pre-populate for easy testing
+            //FirstName.Text = "john";
+            //LastName.Text = "peel";
+            //Age.Text = "66"; ;
+            //Email.Text = "john@bbc.com";
+            //Description.Text = "Music Man";
 
-            Email.Text = "john@bbc.com";
-            Description.Text = "Music Man";
 
         }
 
@@ -103,19 +170,30 @@ namespace CleanerMongoStartUp.Components
         private void OnFileDialogue(object sender, RoutedEventArgs e)
         {
 
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = "JPG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|JPEG Files (*.jpeg)|*.jpeg|GIF Files (*.gif)|*.gif";
+            OpenFileDialog dialogBox = new OpenFileDialog();
+            dialogBox.Filter = "JPG Files (*.jpg)|*.jpg| PNG Files (*.png)|*.png| JPEG Files (*.jpeg)|*.jpeg|GIF Files (*.gif)|*.gif";
 
-            bool? IsDialogueGood = dlg.ShowDialog();
+
+
+            bool? IsDialogGood = dialogBox.ShowDialog();
+
 
             // Get the selected file name and display in a TextBox 
-            if (IsDialogueGood == true)
+            if (IsDialogGood == true)
             {
+                string filepath = dialogBox.FileName;
+                string filename = dialogBox.SafeFileName;
 
-                // access source through this
-                string filepath = dlg.FileName;
-                string filename = dlg.SafeFileName;
-                ImagePath.Text = filename;
+                if (string.IsNullOrEmpty(filepath) == false)
+                {
+                    byte[] imageArray = System.IO.File.ReadAllBytes(filepath);
+                    Base64Image = Convert.ToBase64String(imageArray);
+                    // finally, update UI
+                    ImagePath.Text = filename;
+                }
+
+
+
             }
         }
 
